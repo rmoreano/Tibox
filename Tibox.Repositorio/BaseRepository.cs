@@ -10,55 +10,56 @@ using Tibox.Models;
 
 namespace Tibox.Repositorio
 {
-    public class Repository : IRepository
+    public class BaseRepository<T> : IRepository<T> where T:class
     {
-        private readonly string _connectionString;
+
+        protected readonly string _connectionString;
 
         //ctor para agregar constructor
-        public Repository()
+        public BaseRepository()
         {
             _connectionString = ConfigurationManager
                 .ConnectionStrings["NorthwindConnectionString"]
                 .ConnectionString;
         }
 
-        public bool DeleteCustomer(Customer customer)
+        public bool Delete(T entity)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                return  connection.Delete(customer);
+                return connection.Delete(entity);
             }
         }
 
-        public IEnumerable<Customer> GetAllCustomer()
+        public IEnumerable<T> GetAll()
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                return connection.GetAll<Customer>();
+                return connection.GetAll<T>();
             }
         }
 
-        public Customer GetCustomerById(int id)
+        public T GetEntityById(int id)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                return connection.Get<Customer>(id);
+                return connection.Get<T>(id);
             }
         }
 
-        public int InsertCustomer(Customer customer)
+        public int Insert(T entity)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                return (int)connection.Insert(customer);
+                return (int)connection.Insert(entity);
             }
         }
 
-        public bool UpdateCustomer(Customer customer)
+        public bool Update(T entity)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                return connection.Update(customer);
+                return connection.Update(entity);
             }
         }
     }

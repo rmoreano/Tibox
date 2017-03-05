@@ -3,13 +3,13 @@ using Tibox.Models;
 
 namespace Tibox.Repositorio
 {
-    public interface IRepository
+    public interface IRepository<T> where T:class
     {
-        int InsertCustomer(Customer customer);
-        bool UpdateCustomer(Customer customer);
-        bool DeleteCustomer(Customer customer);
-        Customer GetCustomerById(int id);
+        int Insert(T entity);
+        bool Update(T entity);
+        bool Delete(T entity);
+        T GetEntityById(int id);
 
-        IEnumerable<Customer> GetAllCustomer();
+        IEnumerable<T> GetAll();
     }
 }

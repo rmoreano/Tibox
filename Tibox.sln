@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit Test", "Unit Test", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tibox.DataAccess.Tests", "Tibox.Repository.Tests\Tibox.DataAccess.Tests.csproj", "{35B9A2FA-5554-4D7C-8AA5-02D6010F94A9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tibox.UnitOfWork", "Tibox.UnitOfWork\Tibox.UnitOfWork.csproj", "{B53B1E21-7C6C-46A1-B680-E0BF0ADD2163}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{35B9A2FA-5554-4D7C-8AA5-02D6010F94A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35B9A2FA-5554-4D7C-8AA5-02D6010F94A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35B9A2FA-5554-4D7C-8AA5-02D6010F94A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B53B1E21-7C6C-46A1-B680-E0BF0ADD2163}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B53B1E21-7C6C-46A1-B680-E0BF0ADD2163}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B53B1E21-7C6C-46A1-B680-E0BF0ADD2163}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B53B1E21-7C6C-46A1-B680-E0BF0ADD2163}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
