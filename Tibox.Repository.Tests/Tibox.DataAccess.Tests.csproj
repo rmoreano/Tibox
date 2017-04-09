@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{35B9A2FA-5554-4D7C-8AA5-02D6010F94A9}</ProjectGuid>
+    <ProjectGuid>{0CC39487-AEC9-4819-91F6-08C9C3C5D79F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Tibox.DataAccess.Tests</RootNamespace>
@@ -59,12 +59,12 @@
       <Project>{76d2c39b-04a7-4297-8978-1d8ecbd8ca67}</Project>
       <Name>Tibox.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Tibox.Repositorio\Tibox.Repositorio.csproj">
-      <Project>{e255d798-8991-4810-885e-e733d4cb0598}</Project>
-      <Name>Tibox.Repositorio</Name>
+    <ProjectReference Include="..\Tibox.Repository\Tibox.Repository.csproj">
+      <Project>{f2fc3802-bb38-4365-9b77-ad722a860acc}</Project>
+      <Name>Tibox.Repository</Name>
     </ProjectReference>
     <ProjectReference Include="..\Tibox.UnitOfWork\Tibox.UnitOfWork.csproj">
-      <Project>{b53b1e21-7c6c-46a1-b680-e0bf0add2163}</Project>
+      <Project>{f1f6b300-bcd6-45cb-8bf6-7b13d8697d8b}</Project>
       <Name>Tibox.UnitOfWork</Name>
     </ProjectReference>
   </ItemGroup>

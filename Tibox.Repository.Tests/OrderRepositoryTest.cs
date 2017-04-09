@@ -1,9 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Tibox.Models;
 using Tibox.UnitOfWork;
 
 namespace Tibox.DataAccess.Tests
@@ -12,41 +10,81 @@ namespace Tibox.DataAccess.Tests
     public class OrderRepositoryTest
     {
         private readonly IUnitOfWork _unitOfWork;
-
         public OrderRepositoryTest()
         {
             _unitOfWork = new TiboxUnitOfWork();
         }
-        
+
         [TestMethod]
-        public void Customer_By_Orders()
+        public void Get_All_Orders()
         {
-            var customer = _unitOfWork.Customers.CustomerWithOrders(20);
-           
-            Assert.AreEqual(customer != null, true);
-            Assert.AreEqual(customer.Orders.Any(), true);
+            var orderList = _unitOfWork.Orders.GetAll();
+            Assert.AreEqual(orderList.Count() > 0, true);
         }
 
+        [TestMethod]
+        public void Insert_Order()
+        {
+            var order = new Order
+            {
+                CustomerId=1,
+                OrderDate=DateTime.Now,
+                OrderNumber="99999",
+                TotalAmount=200                                
+            };
+            var result = _unitOfWork.Orders.Insert(order);
+            Assert.AreEqual(result > 0, true);
+        }
+
+        [TestMethod]
+        public void First_ORder_By_Id()
+        {
+            var order = _unitOfWork.Orders.GetEntityById(1);
+            Assert.AreEqual(order != null, true);
+                        
+            Assert.AreEqual(order.Id, 1);
+            Assert.AreEqual(order.CustomerId, 85);
+            Assert.AreEqual(order.TotalAmount, 440);
+
+        }
+
+        [TestMethod]
+        public void Delete_Order()
+        {
+            var customer = _unitOfWork.Orders.GetEntityById(831);
+            Assert.AreEqual(customer != null, true);
+
+            Assert.AreEqual(_unitOfWork.Orders.Delete(customer), true);
+        }
+
+        [TestMethod]
+        public void Update_Order()
+        {
+            var order = _unitOfWork.Orders.GetEntityById(1);
+            Assert.AreEqual(order != null, true);
+
+            Assert.AreEqual(_unitOfWork.Orders.Update(order), true);
+        }
 
         [TestMethod]
         public void Order_By_OrderNumber()
         {
-            var order = _unitOfWork.Orders.OrderByOrderNumber("542397");
+            var order = _unitOfWork.Orders.OrderByOrderNumber("543207");
+            Assert.AreEqual(order != null, true);
             
-            Assert.AreEqual(order != null, true);
-
-            Assert.AreEqual(order.Id, 20);
-            Assert.AreEqual(order.OrderNumber, "542397");
-            Assert.AreEqual(order.CustomerId, 25);
-
+            Assert.AreEqual(order.Id, 830);
+            Assert.AreEqual(order.CustomerId, 65);
+            Assert.AreEqual(order.TotalAmount, Convert.ToDecimal(1374.60));
         }
-        [TestMethod]
-        public void Order_By_OrderItem()
-        {
-            var order = _unitOfWork.Orders.OrderWithOrderItems("542397");
 
+        [TestMethod]
+        public void Customer_With_Orders()
+        {
+            var order = _unitOfWork.Orders.OrderWithOrderItems(1);
             Assert.AreEqual(order != null, true);
+
             Assert.AreEqual(order.OrderItems.Any(), true);
         }
+
     }
 }

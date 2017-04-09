@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Tibox.Models;
-using Tibox.Repositorio;
-using Tibox.Repositorio.Northwind;
+using Tibox.Repository;
+using Tibox.Repository.Northwind;
 
 namespace Tibox.UnitOfWork
 {
@@ -13,9 +13,8 @@ namespace Tibox.UnitOfWork
     {
         ICustomerRepository Customers { get; }
         IOrderRepository Orders { get; }
-        IRepository<Order> Orderss { get; }
         IRepository<OrderItem> OrderItems { get; }
-        IRepository<Product > Products { get; }
+        IRepository<Product> Products { get; }
         IRepository<Supplier> Suppliers { get; }
     }
 }
